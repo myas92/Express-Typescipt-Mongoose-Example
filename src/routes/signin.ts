@@ -6,7 +6,7 @@ import { User } from '../models/user';
 import { Password } from '../services/password';
 const router = express.Router();
 
-router.post('/api/auth/signin',
+router.post('/api/users/signin',
   async (req: Request, res: Response, next: NextFunction) => {
     const { email, password } = req.body;
     const existingUser = await User.findOne({ email });

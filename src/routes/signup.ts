@@ -5,7 +5,7 @@ import { User } from '../models/user'
 const router = express.Router();
 
 router.post(
-  "/api/auth/signup",
+  "/api/users/signup",
   async (req: Request, res: Response, next: NextFunction) => {
     const { email, password } = req.body;
     const existingUser = await User.findOne({ email });
