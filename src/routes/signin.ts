@@ -9,11 +9,13 @@ const router = express.Router();
 router.post('/api/users/signin',
   async (req: Request, res: Response, next: NextFunction) => {
     const { email, password } = req.body;
+
+    // Get user
     const existingUser = await User.findOne({ email });
     if (!existingUser) {
       return next(new Error('Invalid credential'));
     }
-
+    // Check the Passsword
     const passwordMatch = Password.compare(existingUser.password, password);
     if (!passwordMatch) {
       return next(new Error('Invalid credential'));
